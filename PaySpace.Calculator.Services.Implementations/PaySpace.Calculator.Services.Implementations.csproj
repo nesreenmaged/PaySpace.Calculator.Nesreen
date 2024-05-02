@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>PaySpace.Calculator.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Mapster" Version="7.4.0" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PaySpace.Calculator.Domain.Entites\PaySpace.Calculator.Domain.Entites.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Domain.Exceptions\PaySpace.Calculator.Domain.Exceptions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Domain.Repositories.Abstractions\PaySpace.Calculator.Domain.Repositiores.Abstractions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Services.Abstractions\PaySpace.Calculator.Services.Abstractions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Shared.DTOs\PaySpace.Calculator.Shared.DTOs.csproj" />
+    </ItemGroup>
+
+</Project>

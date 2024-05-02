@@ -1,0 +1,23 @@
+@model PaySpace.Calculator.Web.Models.CalculatorViewModel
+
+@{
+    ViewBag.Title = "Calculator"; 
+    Layout = "_Layout";
+}
+
+<h2>Calculator</h2>
+
+@using (Html.BeginForm("Index", "Calculator", FormMethod.Post))
+{
+    <div>
+        <label for="Income">Income:</label>
+        @Html.TextBoxFor(m => m.Income, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="PostalCode">Postal Code:</label>
+        @Html.DropDownListFor(m => m.PostalCode, Model.PostalCodes, "Select Postal Code", new { @class = "form-control" })
+    </div>
+    <div>
+        <input type="submit" value="Calculate" class="btn btn-primary" />
+    </div>
+}

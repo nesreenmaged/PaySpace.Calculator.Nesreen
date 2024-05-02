@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PaySpace.Calculator.Domain.Exceptions\PaySpace.Calculator.Domain.Exceptions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Domain.Repositories.Abstractions\PaySpace.Calculator.Domain.Repositiores.Abstractions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Infrastructure.DataAccesss\PaySpace.Calculator.Infrastructure.DataAccess.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Infrastructure.Repositories.Implementations\PaySpace.Calculator.Infrastructure.Repositories.Implementations.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Services.Abstractions\PaySpace.Calculator.Services.Abstractions.csproj" />
+      <ProjectReference Include="..\PaySpace.Calculator.Services.Implementations\PaySpace.Calculator.Services.Implementations.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="appsettings.Development.json">
+        <DependentUpon>appsettings.json</DependentUpon>
+      </Content>
+    </ItemGroup>
+
+</Project>
