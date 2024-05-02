@@ -68,7 +68,7 @@ namespace PaySpace.Calculator.Services.Implementations.Calculators
         private void ValidateRequest(CalculateInputsDto request)
         {
             if (request == null || !request.Calculation.HasValue)
-                throw new EmptyPostalCodeException();
+                throw new EmptyCalcTypeException();
         }
         private void ValidateRequest(CalculateRequestDto request)
         {
