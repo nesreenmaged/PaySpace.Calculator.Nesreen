@@ -19,7 +19,7 @@ namespace PaySpace.Calculator.Tests
         public async Task Calculate_Should_Return_Expected_Tax(decimal income, decimal expectedTax)
         {
             // Arrange 
-            var input = new CalculateRequestDto() { Income = income, Calculation = CalculatorType.Progressive };
+            var input = new CalculateInputsDto() { Income = income, Calculation = CalculatorType.Progressive };
 
             // Act
             var result = await _calculatorService.Calculate(input);

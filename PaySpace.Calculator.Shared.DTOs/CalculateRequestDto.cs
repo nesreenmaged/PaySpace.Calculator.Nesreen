@@ -9,7 +9,6 @@ namespace PaySpace.Calculator.Shared.DTOs
 {
     public class CalculateRequestDto
     {
-        public CalculatorType? Calculation { get; set; }
         public string? PostalCode { get; set; }
         public decimal Income { get; set; }
 

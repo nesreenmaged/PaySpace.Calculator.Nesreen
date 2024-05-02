@@ -12,10 +12,12 @@
     <div>
         <label for="Income">Income:</label>
         @Html.TextBoxFor(m => m.Income, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Income, "", new { @class = "text-danger" })
     </div>
     <div>
         <label for="PostalCode">Postal Code:</label>
         @Html.DropDownListFor(m => m.PostalCode, Model.PostalCodes, "Select Postal Code", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
     </div>
     <div>
         <input type="submit" value="Calculate" class="btn btn-primary" />

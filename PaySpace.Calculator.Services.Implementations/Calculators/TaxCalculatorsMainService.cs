@@ -29,36 +29,50 @@ namespace PaySpace.Calculator.Services.Implementations.Calculators
          };
 
         }
+        public async Task<CalculateResultDto> Calculate(CalculateInputsDto calculateinput)
+        {
+            // 1-Validate the request
+            ValidateRequest(calculateinput);
 
+            //2-Get rate settings based on calc type 
+            var settings = await GetCalculatorSettings(calculateinput.Calculation.Value);
+
+            //3- get calc service based on calc type
+            var calculatorService = GetCalculatorService(calculateinput.Calculation.Value);
+ 
+            calculateinput.CalculatorSettings = settings;
+
+            //4- calc taxes based on settings 
+            return calculatorService.Calculate(calculateinput);
+        }
         public async Task<CalculateResultDto> Calculate(CalculateRequestDto calculateRequest)
         {
+            // 1-Validate the request
+            ValidateRequest(calculateRequest);
+
             var calcInput = new CalculateInputsDto() { 
                 Income= calculateRequest.Income,
                 PostalCode= calculateRequest .PostalCode,
-                Calculation= calculateRequest.Calculation
-            };
+             };
 
-            // 1-Validate the request
-            ValidateRequest(calcInput);
-
+ 
             // 2-Get calc type from postal code if calculation is null
             var calculatorType = calcInput.Calculation ?? await GetCalculatorTypeFromPostalCode(calcInput.PostalCode);
-
-            //3-Get rate settings based on calc type 
-            var settings = await GetCalculatorSettings(calculatorType);
-
-            //4- get calc service based on calc type
-            var calculatorService = GetCalculatorService(calculatorType);
             calcInput.Calculation = calculatorType;
-            calcInput.CalculatorSettings = settings;
-            //5- calc taxes based on settings 
-            return calculatorService.Calculate(calcInput);
+
+            // 3- Execute calculation
+            return await Calculate(calcInput);
+ 
         }
         #region Private Methods
         private void ValidateRequest(CalculateInputsDto request)
         {
-            if (request == null || (string.IsNullOrWhiteSpace(request.PostalCode) &&
-                !request.Calculation.HasValue))
+            if (request == null || !request.Calculation.HasValue)
+                throw new EmptyPostalCodeException();
+        }
+        private void ValidateRequest(CalculateRequestDto request)
+        {
+            if (request == null || string.IsNullOrWhiteSpace(request.PostalCode))
                 throw new EmptyPostalCodeException();
         }
 
