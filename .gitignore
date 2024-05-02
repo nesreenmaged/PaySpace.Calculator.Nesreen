@@ -400,3 +400,5 @@ FodyWeavers.xsd
 
 # sqlite
 *.sqlite
+/PaySpace.Calculator.API/Calculator-Data.sqlite-shm
+/PaySpace.Calculator.API/Calculator-Data.sqlite-wal
